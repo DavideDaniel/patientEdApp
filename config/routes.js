@@ -32,9 +32,20 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+
+    '/' : 'MainController',
+
+    '/signup' : 'MainController.signup',
+
+    '/login' : 'MainController.login',
+
+    '/provider': 'PatientController.all',
+
+    '/patient?' : 'PatientController.find',
+
+    'post /patient': 'PatientController.create',
+
+  
 
   /***************************************************************************
   *                                                                          *

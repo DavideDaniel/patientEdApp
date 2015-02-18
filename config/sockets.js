@@ -49,12 +49,12 @@ module.exports.sockets = {
   * flashsockets by adding 'flashsocket' to this list:                       *
   *                                                                          *
   ***************************************************************************/
-  // transports: [
-  //   'websocket',
-  //   'htmlfile',
-  //   'xhr-polling',
-  //   'jsonp-polling'
-  // ],
+  transports: [
+    'websocket',
+    'htmlfile',
+    'xhr-polling',
+    'jsonp-polling'
+  ],
 
   /***************************************************************************
   *                                                                          *
@@ -63,7 +63,7 @@ module.exports.sockets = {
   *                                                                          *
   ***************************************************************************/
 
-  // adapter: 'memory',
+  adapter: 'memory',
 
   /***************************************************************************
   *                                                                          *
@@ -146,7 +146,7 @@ module.exports.sockets = {
   *                                                                          *
   ***************************************************************************/
 
-  // authorization: false,
+  authorization: true,
 
   /***************************************************************************
   *                                                                          *
@@ -159,7 +159,7 @@ module.exports.sockets = {
   *                                                                          *
   ***************************************************************************/
 
-  // 'backwardsCompatibilityFor0.9SocketClients': false,
+  'backwardsCompatibilityFor0.9SocketClients': true,
 
   /***************************************************************************
   *                                                                          *
@@ -183,6 +183,6 @@ module.exports.sockets = {
   *                                                                          *
   ***************************************************************************/
 
-  // origins: '*:*',
+  origins: '*:*',
 
 };

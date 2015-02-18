@@ -17,15 +17,16 @@ module.exports = {
 		var email = req.param( "email" );
 		var password = req.param( "password" );
 
-		Patients.findOneByUsername( username )
-			.done( function signupfindUser( err, usr ) {
+		Patient.findOneByUsername( username )
+			.exec( function signupfindPatient( err, usr ) {
 				if ( err ) {
-
+					res.set('error', 'DB Error');
 					res.send( 500, {
 						error: "DB Error"
 					} );
 				}
 				else if ( usr ) {
+					res.set('error', 'Username already Taken');
 					res.send( 400, {
 						error: "Username already Taken"
 					} );
@@ -40,7 +41,7 @@ module.exports = {
 						email: email,
 						password: password
 					} )
-						.done( function ( error, user ) {
+						.exec( function signupCreatePatient ( error, user ) {
 							if ( error ) {
 								res.send( 500, {
 									error: "DB Error"
@@ -58,9 +59,9 @@ module.exports = {
 	login: function ( req, res ) {
 		var username = req.param( "username" );
 		var password = req.param( "password" );
-		Patients.findOneByUsername( username )
-			.done( function loginfindUser( err, usr ) {
-				if ( err ) {
+			Patient.findByUsername(username).exec(function loginFindPatient(err, usr) {
+        if (err) {
+				
 					res.send( 500, {
 						error: "DB Error"
 					} );
