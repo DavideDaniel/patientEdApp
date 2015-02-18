@@ -7,5 +7,10 @@
 
 module.exports = {
 	
+	query: function(req, res) {
+		res.view();
+	},
+
+	_config: {}
 };
 

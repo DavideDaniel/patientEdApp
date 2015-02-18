@@ -14,7 +14,7 @@ module.exports = {
    */
   create: function (req, res) {
     return res.json({
-      todo: 'create() is not implemented yet!'
+
     });
   },
 
@@ -24,7 +24,7 @@ module.exports = {
    */
   destroy: function (req, res) {
     return res.json({
-      todo: 'destroy() is not implemented yet!'
+
     });
   },
 
@@ -34,7 +34,7 @@ module.exports = {
    */
   tag: function (req, res) {
     return res.json({
-      todo: 'tag() is not implemented yet!'
+
     });
   },
 
@@ -44,7 +44,7 @@ module.exports = {
    */
   like: function (req, res) {
     return res.json({
-      todo: 'like() is not implemented yet!'
+
     });
   }
 };

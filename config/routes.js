@@ -37,13 +37,7 @@ module.exports.routes = {
   '/signup': 'MainController.signup',
   '/login': 'MainController.login',
 
-  '/provider': 'PatientController.all',
-
-  '/patient?': 'PatientController.find',
-  'get /sleep/new': 'PatientController.new',
-  'post /patient': 'PatientController.create',
-  'put /patient/:id?': 'PatientController.update',
-  'delete /patient/:id?': 'PatientController.destroy'
+  
 
   /***************************************************************************
    *                                                                          *
