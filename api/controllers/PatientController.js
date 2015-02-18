@@ -53,7 +53,6 @@ module.exports = {
 				} );
 				where = params;
 
-
 			}
 
 			var options = {
@@ -82,9 +81,18 @@ module.exports = {
 	/**
 	 * `PatientController.update()`
 	 */
-	update: function ( req, res ) {
-		return res.json( {
+	update: function ( req, res, next ) {
+		var edits = {};
+		edits = _.merge( {}, req.params.all(), req.body );
+		var id = req.param( 'id' );
 
+		if ( !id ) {
+			return res.badRequest( 'Need id' );
+		}
+		Patient.update( id, edits, function ( err, patient ) {
+			if ( patient.length === 0 ) return res.notFound();
+			if ( err ) return next( err );
+			res.json( patient );
 		} );
 	},
 
