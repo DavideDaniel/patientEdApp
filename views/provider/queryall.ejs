@@ -20,9 +20,51 @@
 		<dl class="info">DOB: 10/20/1981</dl>
 		<ul class="info">Current issues</ul>
 	</div>
-	<div class="rightSide js-packery row col-md-8" data-packery-options='{ "itemSelector": ".cards", "gutter": 10, "columnWidth": 80  }'>
-		<div class="cards col-md-2"></div>
-		<div class="cards col-md-2"></div>
-		<div class="cards col-md-2"></div>
+	<div class="rightSide js-packery row col-md-8" data-packery-options='{ "itemSelector": ".list", "gutter": 2, 	"columnWidth": 80,
+  "rowHeight": 80 }'>
+		<div class="list">
+			<div class="cards"></div>
+			<div class="cards"></div>
+			<div class="cards"></div>
+		</div>
+		<div class="list">
+			<div class="cards"></div>
+			<div class="cards"></div>
+			<div class="cards"></div>
+		</div>
+		<div class="list">
+			<div class="cards "></div>
+			<div class="cards"></div>
+			<div class="cards"></div>
+		</div>
+
+		
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+	console.log('inside script');
+	var $list = $('.list');
+// init
+	var $rightSide = $('.rightSide');
+	$rightSide.packery({
+		itemSelector: '.list',
+		gutter: 2
+	});
+
+$list.packery({
+  itemSelector: '.cards',
+  gutter: 10
+});
+$('.list').find('.cards').each( function( i, itemElem ) {
+  // make element draggable with Draggabilly
+  var draggie = new Draggabilly( itemElem );
+  // bind Draggabilly events to Packery
+  $list.packery( 'bindDraggabillyEvents', draggie );
+});
+
+})
+
+
+
+</script>

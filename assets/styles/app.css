@@ -26,19 +26,20 @@ body {
 
 .rightSide{
 	height: 70vh;
+	padding: 10px;
 	border: red thin solid;
 	background-color: #475577;
 }
-.lists{
-
+.list{
+	padding: 2px;
+	width: 150px;
+	height: 400px;
+	border: red thin solid;
 	background-color: #FBFCFC;
 }
-.lists{
-	height: 80vh;
-	background-color: #000;
-}
 .cards{
-	height: 200px;
-	width: 200px;
-	background-color: #fff;
+	height: 50px;
+	width: 95px;
+	border: red thin solid;
+	background-color: #000;
 }
