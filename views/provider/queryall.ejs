@@ -1,43 +1,28 @@
+<nav id="myNavmenu" class="navmenu navmenu-inverse navmenu-fixed-left offcanvas" role="navigation">
+    <li class="navmenu-brand" href="#">Caseload</li>
 
-<html lang="en">
-<head>
-
-	<meta charset="UTF-8">
-	<title>Doc Page</title>
-</head>
-<body>
-<div class="container">
-	<div class="caseload three columns" >
-		<h1>Caseload</h1>
-		<div class="patient three offset-by-one columns ">
-			<p>Patient name</p>
-		</div>
-		<div class="patient three offset-by-one columns ">
-			<p>Patient name</p>
-		</div>
-		<div class="patient three offset-by-one columns ">
-			<p>Patient name</p>
-		</div>
-		<div class="patient three offset-by-one columns ">
-			<p>Patient name</p>
-		</div>
-		<div class="patient three offset-by-one columns ">
-			<p>Patient name</p>
-		</div>
-	</div>
-	<div class="leftSide three columns">
-		<div class="img"></div>
-		<h2>David Daniel</h2>
-		<description class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta praesentium tenetur tempore excepturi autem id.</description>
-	</div>
-	<div class="rightSide six columns">
-		<div class="boards"></div>
-		<div class="boards"></div>
-		<div class="boards"></div>
-	</div>
-	 <footer class="twelve columns">
-	                    &copy; david e daniel
-	                </footer>
+    <ul class="nav navmenu-nav">
+        <li class="patient active"><a href="#">Patient Name</a></li>
+        <li><a href="#">Patient Name</a></li>
+    </ul>
+</nav>
+<div class="navbar navbar-fixed-left">
+    <button type="button " class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
 </div>
-</body>
-</html>
+<div class="wrapper container-fluid row col-md-12">
+	<div class="leftSide col-md-4">
+    	<div class="img"></div>
+    	<h3>David Daniel</h3>
+		<dl class="info">DOB: 10/20/1981</dl>
+		<ul class="info">Current issues</ul>
+	</div>
+	<div class="rightSide js-packery row col-md-8" data-packery-options='{ "itemSelector": ".cards", "gutter": 10, "columnWidth": 80  }'>
+		<div class="cards col-md-2"></div>
+		<div class="cards col-md-2"></div>
+		<div class="cards col-md-2"></div>
+	</div>
+</div>

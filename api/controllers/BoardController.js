@@ -12,40 +12,40 @@ module.exports = {
   /**
    * `BoardController.create()`
    */
-  create: function (req, res) {
-    return res.json({
+  // create: function (req, res) {
+  //   return res.json({
 
-    });
-  },
+  //   });
+  // },
 
 
   /**
    * `BoardController.destroy()`
    */
-  destroy: function (req, res) {
-    return res.json({
+  // destroy: function (req, res) {
+  //   return res.json({
 
-    });
-  },
+  //   });
+  // },
 
 
   /**
    * `BoardController.tag()`
    */
-  tag: function (req, res) {
-    return res.json({
+  // tag: function (req, res) {
+  //   return res.json({
 
-    });
-  },
+  //   });
+  // },
 
 
   /**
    * `BoardController.like()`
    */
-  like: function (req, res) {
-    return res.json({
+  // like: function (req, res) {
+  //   return res.json({
 
-    });
-  }
+  //   });
+  // }
 };
 

@@ -1,68 +1,44 @@
+
 body {
-	line-height: 1.3;
-	font-family: Open Sans;
+
+		font-family: 'Open Sans', sans-serif;
 	font-weight: 400px;
 	color: rgba(0,0,0,.8);
 	background-color: #FBFCFC;
+	padding-top: 65px;
 	border-top: 10px solid #c0392b ;
 	border-left: 10px solid #c0392b ;
+	border-right: 10px solid #c0392b ;
 
 }
+.wrapper{
+	height: 90vh;
+}
+
 .img {
 	width: 200px;
 	height: 200px;
 	border: thin red solid;
 }
 .container{
-	border: thick blue solid;
+	border: thin blue solid;
 }
-.caseload{
-	border: black solid;
-	left: 10px;
-}
+
 .rightSide{
-	background-color: #F92772;
+	height: 70vh;
+	border: red thin solid;
+	background-color: #475577;
 }
-.boards{
+.lists{
+
 	background-color: #FBFCFC;
 }
-.patient{
-	min-width: 80%;
-	border: red solid thin;
-	margin: 10px auto;
-	padding: 5px;
-	background-color: #F92772;
+.lists{
+	height: 80vh;
+	background-color: #000;
 }
-
-header {
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-nav {
-	float: left;
-}
-nav ul li {
-	display: inline;
-}
-
-h2{
-	font-size: 32px;
-}
-.date{
-	font-size: 14px;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	color: rgba(0,0,0,.5);
-}
-a{	color: #c0392b;}
-
-
-h3{
-	font-weight: 200;
-	
-}
-
-footer{
-	margin-bottom: 30px;	
+.cards{
+	height: 200px;
+	width: 200px;
+	background-color: #fff;
 }

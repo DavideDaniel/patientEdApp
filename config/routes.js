@@ -32,8 +32,7 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-
-  '/': 'MainController',
+'/': 'MainController',
 
   '/signup': 'MainController.signup',
   '/login': 'MainController.login',
@@ -41,9 +40,12 @@ module.exports.routes = {
   '/provider': 'ProviderController.queryAll',
 
   '/patient?': 'PatientController.find',
-  'post /patient': 'PatientController.create',
+  'get /patient/new': 'PatientController.new',
+  'post /patient/': 'PatientController.create',
+  'get /patient/show/:id': 'PatientController.show',
   'put /patient/:id?': 'PatientController.update',
   'delete /patient/:id?': 'PatientController.destroy'
+  
 
   /***************************************************************************
    *                                                                          *

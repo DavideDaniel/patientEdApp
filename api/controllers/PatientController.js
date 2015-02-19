@@ -11,6 +11,7 @@ module.exports = {
 	 * `PatientController.new()`
 	 */
 	new: function ( req, res ) {
+		console.log('inside new route');
 		res.view();
 	},
 
@@ -18,15 +19,15 @@ module.exports = {
 	 * `PatientController.create()`
 	 */
 	create: function ( req, res ) {
+		console.log('inside create route');
 		var params = req.params.all();
 		Patient.create( params, function ( err, patient ) {
 			if ( err ) {
 				res.redirect( '/patient/new' )
 			}
 
-			return res.json(
-
-			);
+			// return res.json();
+			res.redirect('/patient/show/'+patient.id)
 		} )
 
 	},
@@ -35,6 +36,7 @@ module.exports = {
 	 * `PatientController.find()`
 	 */
 	find: function ( req, res ) {
+		console.log('inside find route');
 		var id = req.param( 'id' );
 		var idShortCut = isShortcut( id );
 
@@ -90,6 +92,7 @@ module.exports = {
 	 * `PatientController.show()`
 	 */
 	show: function ( req, res ) {
+		console.log('inside show route');
 		Patient.findOne( req.param.id, function ( err, patient ) {
 			if ( err ) return next( err );
 			if ( !patient ) {
@@ -108,6 +111,7 @@ module.exports = {
 	 * `PatientController.update()`
 	 */
 	update: function ( req, res ) {
+		console.log('inside update route');
 		var edits = {};
 		edits = _.merge( {}, req.params.all(), req.body );
 		var id = req.param( 'id' );
@@ -126,6 +130,7 @@ module.exports = {
 	 * `PatientController.delete()`
 	 */
 	destroy: function ( req, res ) {
+		console.log('inside destroy route');
 		var id = req.param( 'id' );
 		if ( !id ) {
 			return res.badRequest( 'Need id.' );
