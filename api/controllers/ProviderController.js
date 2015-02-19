@@ -6,9 +6,9 @@
  */
 
 module.exports = {
-	
-	query: function(req, res) {
-		res.view();
+
+	queryAll: function(req, res) {
+		res.view('provider/queryall.ejs');
 	},
 
 	_config: {}

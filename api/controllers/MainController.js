@@ -43,7 +43,7 @@ module.exports = {
 					} )
 						.exec( function signupCreatePatient ( error, user ) {
 							if ( error ) {
-								res.send( 500, {
+								res.send( {
 									error: "DB Error"
 								} );
 							}
@@ -62,7 +62,7 @@ module.exports = {
 			Patient.findByUsername(username).exec(function loginFindPatient(err, usr) {
         if (err) {
 				
-					res.send( 500, {
+					res.send( {
 						error: "DB Error"
 					} );
 				}
