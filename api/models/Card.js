@@ -21,6 +21,10 @@ module.exports = {
 			type: 'string'
 		},
 
+		imageUrl: {
+			type: 'string'
+		},
+
 		language: {
 			type: 'string'
 		},

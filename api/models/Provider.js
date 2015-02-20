@@ -13,10 +13,6 @@ module.exports = {
 			type: 'int'
 		},
 
-		userType: {
-			admin: true
-		},
-
 		username: {
 			type: 'string',
 			required: true

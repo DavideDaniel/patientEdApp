@@ -107,7 +107,7 @@
                 '/login',
                 {username: username, password:password},
                 function () {
-                    window.location = "/patient";
+                    window.location = "/patient/show/"+patient.id;
                 }
             ).fail(function(res){
                 alert("Error: " + res.getResponseHeader("error"));
@@ -129,7 +129,7 @@
                 '/signup',
                 {username: username, password:password},
                 function () {
-                    window.location = "/patient";
+                    window.location = "/patient/show/"+patient.userId;
                 }
             ).fail(function(res){
                 alert("Error: " + res.getResponseHeader("error"));

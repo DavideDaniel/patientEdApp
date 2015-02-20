@@ -13,29 +13,23 @@ module.exports = {
 			type: 'int'
 		},
 
-		userType: {
-			admin: false
-		},
-
 		username: {
-			type: 'string',
-			required: true
+			type: 'string'
 		},
 
 		email: {
-			type: 'string',
-			email: true,
-			required: true
+			type: 'string'
+
 		},
 
 		fullName: {
-			type: 'string',
-			required: true
+			type: 'string'
+
 		},
 
 		password: {
-			type: 'string',
-			required: true
+			type: 'string'
+
 		}
 	}
 };

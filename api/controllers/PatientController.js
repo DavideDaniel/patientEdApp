@@ -10,80 +10,37 @@ module.exports = {
 	/**
 	 * `PatientController.new()`
 	 */
-	signup: function ( req, res ) {
+	new: function ( req, res, next ) {
 
-		var username = req.param( "username" );
-		var firstName = req.param( "firstName" );
-		var lastName = req.param( "lastName" );
-		var email = req.param( "email" );
-		var password = req.param( "password" );
 
-		Patient.findOneByUsername( username )
-			.exec( function signupfindPatient( err, usr ) {
-				if ( err ) {
-					res.set('error', 'DB Error');
-					res.send( 500, {
-						error: "DB Error"
-					} );
-				}
-				else if ( usr ) {
-					res.set('error', 'Username already Taken');
-					res.send( 400, {
-						error: "Username already Taken"
-					} );
-				}
-				else {
-					 var hasher = require("password-hash");
-                		password = hasher.generate(password);
-					Patient.create( {
-						username: username,
-						firstName: firstName,
-						lastName: lastName,
-						email: email,
-						password: password
-					} )
-						.exec( function signupCreatePatient ( error, patient ) {
-							if ( error ) {
-								res.send( {
-									error: "DB Error"
-								} );
-							}
-							else {
-								req.session.patient = patient;
-								res.send( patient );
-							}
-						} );
-				}
-			} );
-
-	},
-	new: function ( req, res ) {
-		console.log('inside new route');
-		res.redirect('/patient/create')
+		console.log( 'inside new route' );
+		res.view('main/index.ejs')
 	},
 
 	/**
 	 * `PatientController.create()`
 	 */
-	create: function ( req, res ) {
-		console.log('inside create route');
-		var params = req.params.all();
-		Patient.create( params, function ( err, patient ) {
-			if ( err ) {
-				res.redirect( '/patient/new' )
+	create: function ( req, res, next ) {
+		console.log( 'inside create route' );
+		Patient.create( req.params.all(), function patientCreated( err, patient ) {
+			if ( err ){
+				return res.redirect('/patient/new')
+			}
+			else {
+				var patient = patient
+
+				// return res.json();
+				res.redirect( '/patient/show/' + patient.id )
 			}
 
-			// return res.json();
-			res.redirect('/patient/show/'+patient.id)
 		} )
-
 	},
 
 	/**
 	 * `PatientController.find()`
 	 */
-	find: function ( req, res ) {
-		console.log('inside find route');
+	find: function ( req, res, next ) {
+		console.log( 'inside find route' );
 		var id = req.param( 'id' );
 		var idShortCut = isShortcut( id );
 
@@ -91,7 +48,7 @@ module.exports = {
 			return res.notFound();
 		}
 		if ( id ) {
-			Patient.findOne( id, function ( err, patient ) {
+			Patient.findOneById( id, function ( err, patient ) {
 				if ( patient === undefined ) return res.notFound();
 				if ( err ) return res.notFound();
 				res.json( patient );
@@ -128,7 +85,8 @@ module.exports = {
 		}
 
 		function isShortcut( id ) {
-			if ( id === 'find' || id === 'update' || id === 'create' || id === 'destroy' ) {
+			if ( id === 'find' || id === 'update' || id === 'create' || id ===
+				'destroy' ) {
 				return true;
 			}
 		}
@@ -138,27 +96,42 @@ module.exports = {
 	/**
 	 * `PatientController.show()`
 	 */
-	show: function ( req, res ) {
-		console.log('inside show route');
-		Patient.findOne( req.param.id, function ( err, patient ) {
+	show: function ( req, res, next ) {
+		console.log( 'inside show route' );
+		Patient.findOneById( req.param( 'id' ), function ( err, patient ) {
 			if ( err ) return next( err );
-			if ( !patient ) {
-				return res.notFound();
-			}
-			else {
-				res.view( {
-					user: user
-				} );
-			}
+			if ( !patient )
+				return next();
+			// res.json(patient)
+			res.view( {
+				patient: patient
+			} );
+
 		} );
 
 	},
 
 	/**
+	 * `PatientController.edit()`
+	 */
+	 edit: function(req, res, next){
+	 Patient.findOneById( req.param( 'id' ), function foundPatient( err, patient ) {
+			if ( err ) return next( err );
+			if ( !patient )
+				return next();
+			// res.json(patient)
+			res.view( {
+				patient: patient
+			} );
+
+		} );
+
+	},
+	 /**
 	 * `PatientController.update()`
 	 */
-	update: function ( req, res ) {
-		console.log('inside update route');
+	update: function ( req, res, next ) {
+		console.log( 'inside update route' );
 		var edits = {};
 		edits = _.merge( {}, req.params.all(), req.body );
 		var id = req.param( 'id' );
@@ -176,15 +149,15 @@ module.exports = {
 	/**
 	 * `PatientController.delete()`
 	 */
-	destroy: function ( req, res ) {
-		console.log('inside destroy route');
+	destroy: function ( req, res, next ) {
+		console.log( 'inside destroy route' );
 		var id = req.param( 'id' );
 		if ( !id ) {
 			return res.badRequest( 'Need id.' );
 		}
 
-		Patient.findOne( id )
-			.done( function ( err, result ) {
+		Patient.find( id )
+			.exec( function ( err, result ) {
 				if ( err ) return res.serverError( err );
 				if ( !result ) return res.notFound();
 				Patient.destroy( id, function ( err ) {
