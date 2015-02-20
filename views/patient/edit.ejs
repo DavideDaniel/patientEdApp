@@ -1,19 +1,19 @@
 
-<div class="navmenu navmenu-xs navmenu-inverse navmenu-fixed-left offcanvas in canvas-slid">
+<nav class="navmenu navmenu-inverse navmenu-fixed-left">
     <li class="navmenu-brand" href="#">Caseload</li>
 
     <ul class="nav navmenu-nav">
-        <li class="patient active"><a href="#">Patient Name</a></li>
+
 <% patients.forEach( function ( patient ) { %>
 <% console.log(patient) %>
 <li class="patient" >
-	<a href="<%= patient.id %>"><%= patient.fullName  %></a>
+	<a href="/patient/show/<%= patient.id %>"><%= patient.fullName  %></a>
 <% } ) %>
 
         
     </ul>
-</div>
-</div>
+</nav>
+
 
     
 

@@ -19,7 +19,7 @@ body {
 	padding: 2px;
 
 	max-height: 800px;
-	border: red thin solid;
+	
 	background-color: #FBFCFC;
 }
 .center-block {
@@ -41,16 +41,16 @@ img {
 .img {
 	width: 200px;
 	height: 200px;
-	border: thin red solid;
+	
 }
 .container{
-	border: thin blue solid;
+	
 }
 
 .rightSide{
 	height: 70vh;
 	padding: 10px;
-	border: red thin solid;
+	
 	background-color: #475577;
 }
 .list{
@@ -59,7 +59,7 @@ img {
 	padding: 2px;
 	width: 156px;
 	max-height: 800px;
-	border: red thin solid;
+	
 	background-color: #E2E4E6;
 }
 .cards{
@@ -67,6 +67,6 @@ img {
 	font-size: 12px;
 	height: 90px;
 	width: 150px;
-	border: red thin solid;
+	
 	background-color: #fff;
 }

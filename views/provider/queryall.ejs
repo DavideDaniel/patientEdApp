@@ -7,7 +7,7 @@
 <% patients.forEach( function ( patient ) { %>
 <% console.log(patient) %>
 <li class="patient" >
-	<a href="<%= patient.id %>"><%= patient.fullName  %></a>
+	<a href="/patient/show/<%= patient.id %>"><%= patient.fullName  %></a>
 <% } ) %>
 
         

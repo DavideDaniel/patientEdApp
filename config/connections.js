@@ -28,10 +28,10 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
-  // localDiskDb: {
+  localDiskDb: {
     // adapter: 'sqlite3'
-    // adapter: 'sails-disk'
-  // },
+    adapter: 'sails-disk'
+  }
 
   /***************************************************************************
   *                                                                          *
@@ -75,28 +75,19 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-  somePostgresqlServer: {
-    
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    port: 5432,
-    database: 'finalProject.db',
-    pool: false,
-    ssl: false,
-    
-  },
 
-  postgres: {
-    adapter: 'sails-postgresql',
-    host: 'localhost',
-    user: 'PG_user_name',
-    password: 'PG_pw',
-    database: 'PG_db_name',
-
-    schema: true //This makes sure that sails matches 
-    //the database schema to your models.
-  }
+  // postgres: {
+  //   adapter: 'sails-postgresql',
+  //   host: 'localhost',
+  //   user: process.env.PG_user_name,
+  //   password: process.env.PG_pw,
+  //   database: process.env.PG_db_name,
+  //   pool: false,
+  //   ssl: false,
+    
+  //   schema: true //This makes sure that sails matches 
+  //   //the database schema to your models.
+  // }
 
 
   /***************************************************************************

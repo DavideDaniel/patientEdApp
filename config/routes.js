@@ -32,7 +32,7 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-'/': 'MainController',
+  '/': 'MainController',
 
   '/signup': 'MainController.signup',
   '/login': 'MainController.login',

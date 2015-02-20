@@ -1,62 +1,17 @@
-<div class="container">
-	<h1><%- patient.name %></h1>
-	<h3><%- patient.username %></h3>
+
+	
+	
+	<h1><%- patient.fullName %></h1>
+
 	<br>
-	<h3><%- patient.email %></h3>
+	<h5><%- patient.email %></h5>
 	<a href="#/logout" class="btn btn-medium btn-default">Logout</a>
-</div>
 
-
-<div id="newPatientForm">
-    <textarea id="patient" placeholder="Enter your patient here:"></textarea>
-    <button id="postPatientButton">Add Patient</button>
-</div>
-<div id="patientsContainer">
-</div>
 
 <script>
 
     var PatientModel = Backbone.Model.extend({
         urlRoot: 'http://localhost:1337/patients'
-    });
-
-    var SailsCollection = Backbone.Collection.extend({
-        sailsCollection: "",
-        socket: null,
-        sync: function(method, model, options){
-            var where = {};
-            if (options.where) {
-                where = {
-                    where: options.where
-                }
-            }
-            if(typeof this.sailsCollection === "string" && this.sailsCollection !== "") {
-                this.socket = io.connect();
-                this.socket.on("connect", _.bind(function(){
-                    this.socket.request("/" + this.sailsCollection, where, _.bind(function(users){
-                        this.set(users);
-                    }, this));
-
-                    this.socket.on("patient", _.bind(function(pat){
-                        // var p = pat.uri.split("/").pop();
-                        // In v0.9.0 the REST method is now stored in the patients verb property
-                        var p = pat.verb;
-                        if (p === "create") {
-                            this.add(pat.data);
-                        } else if (p === "update") {
-                            // this.get(pat.data.id).set(pat.data);
-                            // In v0.9.0 the patient id property is no longer stored in the data object.
-                            this.get(pat.id).set(pat.data);
-                        } else if (p === "destroy") {
-                            // this.remove(this.get(pat.data.id));
-                            this.remove(this.get(pat.id));
-                        }
-                    }, this));
-                }, this));
-            } else {
-                console.log("Error: Cannot retrieve models because property 'sailsCollection' not set on the collection");
-            }
-        }
     });
 
 
@@ -92,7 +47,7 @@
 			this.render();
 		},
 		template: _.template(
-			"<div><p><b>{{ username }}: </b>{{ patient.fullName }}</p></div>" ),
+			"<div><p><b>{{ fullName }} </b>{{ id }}</p></div>" ),
 		render: function () {
 			this.$el.html( "" );
 			this.collection.each( function ( pat ) {
