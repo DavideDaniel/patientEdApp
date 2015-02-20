@@ -76,7 +76,7 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
   somePostgresqlServer: {
-    adapter: 'sails-postgresql',
+    
     host: 'localhost',
     user: 'root',
     password: '',
@@ -85,6 +85,17 @@ module.exports.connections = {
     pool: false,
     ssl: false,
     
+  },
+
+  postgres: {
+    adapter: 'sails-postgresql',
+    host: 'localhost',
+    user: 'PG_user_name',
+    password: 'PG_pw',
+    database: 'PG_db_name',
+
+    schema: true //This makes sure that sails matches 
+    //the database schema to your models.
   }
 
 
