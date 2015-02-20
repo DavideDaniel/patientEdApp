@@ -1,20 +1,22 @@
-<nav id="myNavmenu" class="navmenu navmenu-inverse navmenu-fixed-left offcanvas" role="navigation">
+
+<div class="navmenu navmenu-default navmenu-fixed-left offcanvas in canvas-slid"></div>
     <li class="navmenu-brand" href="#">Caseload</li>
 
     <ul class="nav navmenu-nav">
         <li class="patient active"><a href="#">Patient Name</a></li>
         <li><a href="#">Patient Name</a></li>
     </ul>
-</nav>
-<div class="navbar navbar-fixed-left">
-    <button type="button " class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+</div>
+
+    
+
+<div class="wrapper container-fluid row col-md-12">
+	<div class="leftSide col-md-4">
+    	<button type="button " class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     </button>
-</div>
-<div class="wrapper container-fluid row col-md-12">
-	<div class="leftSide col-md-4">
     	<div class="img"></div>
     	<h3>David Daniel</h3>
 		<dl class="info">DOB: 10/20/1981</dl>
@@ -23,6 +25,7 @@
 	<div class="rightSide js-packery row col-md-8" data-packery-options='{ "itemSelector": ".list", "gutter": 2, 	"columnWidth": 80,
   "rowHeight": 80 }'>
 		<div class="list">
+			<p class="listName">Title</p>
 			<div class="cards"></div>
 			<div class="cards"></div>
 			<div class="cards"></div>
@@ -32,8 +35,18 @@
 			<div class="cards"></div>
 			<div class="cards"></div>
 		</div>
-		<div class="list">
+		<div class="list">	
 			<div class="cards "></div>
+			<div class="cards"></div>
+			<div class="cards"></div>
+		</div>
+		<div class="list">	
+			<div class="cards "></div>
+			<div class="cards"></div>
+			<div class="cards"></div>
+		</div>
+		<div class="list">	
+			<div class="cards"></div>
 			<div class="cards"></div>
 			<div class="cards"></div>
 		</div>
@@ -47,15 +60,43 @@ $(document).ready(function(){
 	var $list = $('.list');
 // init
 	var $rightSide = $('.rightSide');
+
 	$rightSide.packery({
 		itemSelector: '.list',
-		gutter: 2
-	});
+		gutter: 2,
+		columnWidth: 80,
 
-$list.packery({
+	});
+	$list.packery({
   itemSelector: '.cards',
   gutter: 10
 });
+
+// $rightSide.find($list).each(function(i, div){
+
+// 	var dragger = new Draggabilly (div);
+// 	$rightSide.packery('bindDraggabillyEvents', dragger);
+// });
+
+$rightSide.on( 'click', '.list', function( event ) {
+  var $target = $( event.target )
+  var bigger = $target.hasClass('bigList');
+  $target.toggleClass('bigList');
+
+  if ( bigger ) {
+    // if shrinking, just layout
+    $rightSide.packery({
+		itemSelector: '.list',
+		gutter: 2,
+		columnWidth: 80,
+
+	});
+  } else {
+    $rightSide.packery( 'fit', event.target );
+  }
+});
+
+
 $('.list').find('.cards').each( function( i, itemElem ) {
   // make element draggable with Draggabilly
   var draggie = new Draggabilly( itemElem );

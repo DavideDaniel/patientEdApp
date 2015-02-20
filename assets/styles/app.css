@@ -1,20 +1,43 @@
 
 body {
 
-		font-family: 'Open Sans', sans-serif;
+
+	font-family: 'Open Sans', sans-serif;
 	font-weight: 400px;
 	color: rgba(0,0,0,.8);
 	background-color: #FBFCFC;
-	padding-top: 65px;
-	border-top: 10px solid #c0392b ;
-	border-left: 10px solid #c0392b ;
-	border-right: 10px solid #c0392b ;
 
+	border-top: 65px solid #1770AF ;
+	border-left: 10px;
+	border-right: 10px;
+
+}
+.bigList{
+	border-radius: 6px;
+	width: 300px;
+	padding-top: 20px; !important
+	padding: 2px;
+
+	max-height: 800px;
+	border: red thin solid;
+	background-color: #FBFCFC;
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .wrapper{
-	height: 90vh;
-}
 
+}
+img {
+   display: block;
+   margin-left: auto;
+   margin-right: auto
+}
+.listName{
+	display: fixed top;
+}
 .img {
 	width: 200px;
 	height: 200px;
@@ -31,15 +54,18 @@ body {
 	background-color: #475577;
 }
 .list{
+	border-radius: 6px;
+	padding-top: 20px; !important
 	padding: 2px;
 	width: 150px;
-	height: 400px;
+	max-height: 800px;
 	border: red thin solid;
-	background-color: #FBFCFC;
+	background-color: #E2E4E6;
 }
 .cards{
-	height: 50px;
-	width: 95px;
+	border-radius: 6px;
+	height: 90px;
+	width: 125px;
 	border: red thin solid;
-	background-color: #000;
+	background-color: #fff;
 }

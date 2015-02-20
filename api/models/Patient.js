@@ -1,23 +1,41 @@
 /**
-* Patient.js
-*
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
-*/
+ * Patient.js
+ *
+ * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @docs        :: http://sailsjs.org/#!documentation/models
+ */
 
 module.exports = {
 
-  attributes: {
+	attributes: {
 
-    userId : { type: 'int' },
+		userId: {
+			type: 'int'
+		},
 
-    username : { type: 'string' },
+		userType: {
+			admin: false
+		},
 
-    email : { type: 'string' },
+		username: {
+			type: 'string',
+			required: true
+		},
 
-    fullName : { type: 'string' },
+		email: {
+			type: 'string',
+			email: true,
+			required: true
+		},
 
-    password : { type: 'string' }
-  }
+		fullName: {
+			type: 'string',
+			required: true
+		},
+
+		password: {
+			type: 'string',
+			required: true
+		}
+	}
 };
-

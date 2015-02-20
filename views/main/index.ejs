@@ -1,19 +1,102 @@
-<h2>Patient Ed</h2>
-<div>
-    <h3>Login</h3>
-    <input type="text" id="loginName" placeholder="name" />
-    <input type="password" id="loginPassword" placeholder="password" />
-    <button id="loginButton">Login</button>
+
+    <div class="wrapper">
+        
+
+
+    <div class="leftHolder form-horizontal">
+    <fieldset>
+    <legend>Sign in</legend>
+    <div class="control-group">
+    <label for="loginName" class="controls">
+        Screen Name
+    </label>
+
+    </div>
+    <div class="controls">
+    <input type="text" name="loginName">
+    </div>
+
+    <div class="control-group">
+<label for="password" class="controls">
+        Password
+</label>
 </div>
-<div>
-    <h3>Signup</h3>
-    <input type="text" id="signupName" placeholder="username" />
-    <input type="text" id="fullName" placeholder="full name" />
-    <input type="text" id="email" placeholder="email" />
-    <input type="password" id="signupPassword" placeholder="password" />
-    <input type="password" id="signupConfirmPassword" placeholder="confirm password" />
-    <button id="signupButton">Signup</button>
+<div class="controls">
+<input type="password" id="loginPassword">
+
 </div>
+<input type="hidden" name="authenticity_token" value = "">
+<br>
+<button id="loginButton" class= "btn btn-default btn-sm">Sign In</button>
+    </fieldset>
+    </div>
+<br>
+<br>
+    <div class="rightHolder form-horizontal">
+    <fieldset>
+    <legend>Sign up</legend></fieldset>
+    <div class="control-group">
+    <label for="signupName" class="controls">
+        User Name
+    </label>
+
+    </div>
+    <div class="controls">
+    <input type="text" id="signupName"/>
+    </div>
+
+    <div class="control-group">
+    <label for="fullName" class="controls">
+        Full Name
+    </label>
+
+    </div>
+    <div class="controls">
+    <input type="text" id="fullName" name="fullName" />
+    </div>
+
+    <div class="control-group">
+    <label for="email" class="controls">
+        Email
+    </label>
+
+    </div>
+    <div class="controls">
+    <input type="text" id="email" name="email" />
+    </div>
+
+    <div class="control-group">
+<label for="password" class="controls">
+        Password
+</label>
+</div>
+<div class="controls">
+<input type="password" name= "password" id="signupPassword" />
+</div>
+
+    <div class="control-group">
+<label for="confirm_password" class="controls">
+        Confirm Password
+</label>
+</div>
+<div class="controls">
+<input type="password" id="signupConfirmPassword" name="confirm_password" />
+</div>
+
+<input type="hidden" name="authenticity_token" value = "">
+<br>
+<button id="signupButton" class= "btn btn-default btn-sm">Sign Up</button>
+    </fieldset>
+    </div>
+    
+
+    
+    
+    
+
+    </div>
+</div>
+
 
 <script>
     $("#loginButton").click(function(){

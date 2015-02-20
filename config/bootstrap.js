@@ -13,6 +13,7 @@
 module.exports.bootstrap = function(cb) {
 
 require('express-helpers')(sails.hooks.http.app);
+
 _.extend(sails.hooks.http.app.locals, sails.config.http.locals);
 
   // It's very important to trigger this callback method when you are finished

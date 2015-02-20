@@ -38,6 +38,7 @@ module.exports.routes = {
   '/login': 'MainController.login',
 
   '/provider': 'ProviderController.queryAll',
+  '/provider/trello': 'ProviderController.getTrello',
 
   '/patient?': 'PatientController.find',
   'get /patient/new': 'PatientController.new',
