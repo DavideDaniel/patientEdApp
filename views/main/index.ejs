@@ -119,17 +119,20 @@
     
     $("#signupButton").click(function(){
     var username = $("#signupName").val();
+    console.log(username);
     var fullName = $("#fullName").val();
+    console.log(fullName);
     var email = $("#email").val();
+    console.log(email);
     var password = $("#signupPassword").val();
     var confirmPassword = $("#signupConfirmPassword").val();
     if (username && password) {
         if (password === confirmPassword) {
             $.post(
                 '/signup',
-                {username: username, password:password},
+                {username: username, fullName: fullName, email: email, password:password},
                 function () {
-                    window.location = "/patient/show/"+patient.userId;
+                    window.location = "/patients/"+patient.id;
                 }
             ).fail(function(res){
                 alert("Error: " + res.getResponseHeader("error"));

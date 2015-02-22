@@ -42,7 +42,7 @@ module.exports.routes = {
 
   '/patient?': 'PatientController.find',
   'get /patient/new': 'PatientController.new',
-  'post /patient/': 'PatientController.create',
+  // 'post /patient/:id': 'PatientController.create',
   'get /patient/show/:id': 'PatientController.show',
   'put /patient/:id?': 'PatientController.update',
   'delete /patient/:id?': 'PatientController.destroy'

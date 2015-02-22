@@ -10,13 +10,15 @@ module.exports = {
 		res.view()
 	},
 	signup: function ( req, res ) {
-
+		console.log('inside main controller signup');
 		var username = req.param( "username" );
-		var firstName = req.param( "firstName" );
-		var lastName = req.param( "lastName" );
+		var fullName = req.param( "fullName" );
 		var email = req.param( "email" );
 		var password = req.param( "password" );
-
+		console.log(username);
+		console.log(fullName);
+		console.log(email);
+		console.log(password);
 		Patient.findOneByUsername( username )
 			.exec( function signupfindPatient( err, usr ) {
 				if ( err ) {
@@ -36,8 +38,7 @@ module.exports = {
                 		password = hasher.generate(password);
 					Patient.create( {
 						username: username,
-						firstName: firstName,
-						lastName: lastName,
+						fullName: fullName,
 						email: email,
 						password: password
 					} )

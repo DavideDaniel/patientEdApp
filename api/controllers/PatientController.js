@@ -27,7 +27,7 @@ module.exports = {
 				return res.redirect('/patient/new')
 			}
 			else {
-				var patient = patient
+				console.log(patient);
 
 				// return res.json();
 				res.redirect( '/patient/show/' + patient.id )

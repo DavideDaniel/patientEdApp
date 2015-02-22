@@ -9,10 +9,6 @@ module.exports = {
 
 	attributes: {
 
-		userId: {
-			type: 'int'
-		},
-
 		username: {
 			type: 'string'
 		},
