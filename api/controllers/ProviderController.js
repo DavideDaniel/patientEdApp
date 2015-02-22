@@ -7,18 +7,11 @@
 
 module.exports = {
 
-	queryAll: function ( req, res, next ) {
-		Patient.find( function foundPatients( err, patients ) {
-			if ( err ) next( err );
-
-			res.view( 'provider/queryall.ejs', {
-				patients: patients
-			} );
-		} )
+	getTrello: function ( req, res, next ) {
 
 	},
 
-	getTrello: function ( req, res ) {
+	queryall: function ( req, res ) {
 		var trelloKey = process.env.TRELLO_KEY;
 		var request = require( 'request' );
 		console.log( "inside the getTrello function" );
@@ -38,22 +31,33 @@ module.exports = {
 
 								var cards = data.cards
 								var card_array = [];
+								Patient.find( function foundPatients( err, patients ) {
+									if ( err ) next( err );
 
-								for ( var i = 0; i < cards.length; i++ ) {
-									var card = {
-										name: cards[ i ].name,
-										url: cards[ i ].desc,
-										language: cards[ i ].labels[ 1 ].name,
-										issue: cards[ i ].labels[ 0 ].name
-										// labels: cards[ i ].labels
+									for ( var i = 0; i < cards.length; i++ ) {
+										
+										var card = {
+											name: cards[ i ].name,
+											url: cards[ i ].desc,
+											language: cards[ i ].labels[ 1 ].name,
+											issue: cards[ i ].labels[ 0 ].name
+											// labels: cards[ i ].labels
+										}
+										console.log( card.labels );
+										card_array.push( card )
 									}
-									console.log( card.labels );
-									card_array.push( card )
-								}
+
+
+									
 								console.log( card_array );
-								res.view( 'provider/test.ejs', {
-									cards: card_array
-								} );
+								res.view( 'provider/queryall.ejs', {
+										patients: patients
+									,  cards: card_array
+									} );
+								} )
+								// res.view( 'provider/test.ejs', {
+								// 	cards: card_array
+								// } );
 							}
 							else {
 

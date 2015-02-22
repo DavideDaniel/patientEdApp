@@ -76,18 +76,18 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
 
-  // postgres: {
-  //   adapter: 'sails-postgresql',
-  //   host: 'localhost',
-  //   user: process.env.PG_user_name,
-  //   password: process.env.PG_pw,
-  //   database: process.env.PG_db_name,
-  //   pool: false,
-  //   ssl: false,
+  postgres: {
+    adapter: 'sails-postgresql',
+    host: 'localhost',
+    user: process.env.PG_user_name,
+    password: process.env.PG_pw,
+    database: process.env.PG_db_name,
+    pool: false,
+    ssl: false,
     
-  //   schema: true //This makes sure that sails matches 
-  //   //the database schema to your models.
-  // }
+    schema: true //This makes sure that sails matches 
+    //the database schema to your models.
+  }
 
 
   /***************************************************************************

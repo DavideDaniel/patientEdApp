@@ -1,6 +1,6 @@
 
 body {
-
+	padding-left: 300px;
 
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400px;
@@ -12,9 +12,13 @@ body {
 	border-right: 10px;
 
 }
+.navmenu {
+	width: 200px;
+}
 .bigList{
 	border-radius: 6px;
-	width: 300px;
+	width: 600px;
+	font-size: 20px;
 	padding-top: 20px; !important
 	padding: 2px;
 
@@ -69,4 +73,10 @@ img {
 	width: 150px;
 	
 	background-color: #fff;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-left: 300px;
+  }
 }
