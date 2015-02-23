@@ -16,6 +16,8 @@ module.exports = {
 		res.view('providersession/new')
 	},
 
+	
+
 	create: function ( req, res, next ) {
 		console.log( req.params.all );
 		// Check for username and password in params sent via the form

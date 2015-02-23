@@ -31,16 +31,6 @@ module.exports = {
 		}
 	},
 
-	admin: {
-		type: 'boolean',
-		defaultsTo: false
-	},
-
-	online: {
-		type: 'boolean',
-		defaultsTo: false
-	},
-
 	beforeCreate: function ( values, next ) {
 
 		// This checks to make sure the password and password confirmation match before creating record

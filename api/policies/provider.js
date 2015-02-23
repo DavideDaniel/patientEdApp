@@ -4,7 +4,7 @@
 module.exports = function (req, res, ok) {
 
   // Provider is allowed, proceed to controller
-  if (req.session.Provider && req.session.Provider.admin) {
+  if (req.session.Provider || req.session.Patient.admin) {
     return ok();
   }
 

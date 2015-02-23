@@ -27,16 +27,6 @@ module.exports = {
 		}
 	},
 
-	admin: {
-			type: 'boolean',
-			defaultsTo: true
-		},
-
-	online: {
-		type: 'boolean',
-		defaultsTo: false
-	},
-
 
 	beforeCreate: function ( values, next ) {
 
@@ -52,7 +42,6 @@ module.exports = {
 				encryptedPassword ) {
 				if ( err ) return next( err );
 				values.encryptedPassword = encryptedPassword;
-				// values.online= true;
 				next();
 			} );
 	}

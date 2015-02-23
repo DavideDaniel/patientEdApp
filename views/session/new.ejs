@@ -11,13 +11,22 @@
     <input type="text" name="username">
     </div>
 
+
     <div class="control-group">
+
 <label for="password" class="controls">
         Password
 </label>
 </div>
+
 <div class="controls">
 <input type="password" name="password">
+
+</div>
+<div class="controls">
+ <label class="btn btn-primary-xs">
+    <input type="radio" name="admin" id="adminCheck" autocomplete="off"> Check for admin
+  </label>
 
 </div>
 <input type="hidden" name="_csrf" value = "<%= _csrf %>">

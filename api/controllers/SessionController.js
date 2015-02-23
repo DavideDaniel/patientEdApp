@@ -17,15 +17,17 @@ module.exports = {
 	},
 
 	create: function ( req, res, next ) {
-		console.log( req.params.all );
+		console.log(req.params);
 		// Check for username and password in params sent via the form
 		// redirect the browser back to the sign-in form  if none
 		if ( !req.param( 'username' ) || !req.param( 'password' ) ) {
+
 
 			var usernamePasswordRequiredError = [ {
 				name: 'usernamePasswordRequired',
 				message: 'You must enter both a username and password.'
 			} ]
+
 
 			// key of usernamePasswordRequiredError
 			req.session.flash = {
@@ -35,6 +37,7 @@ module.exports = {
 			res.redirect( '/session/new' );
 			return;
 		}
+
 		// Try to find the patient by their username..
 		Patient.findOneByPatientUsername( req.param( 'username' ), function foundPatient(
 			err, patient ) {
@@ -80,12 +83,20 @@ module.exports = {
 					patient.save( function ( err, patient ) {
 						if ( err ) return next( err );
 
+						if (req.param('admin'==='on')){console.log('inside radio route');req.session.Patient.admin = true }
+						// If the patient is also an admin redirect to the patient list (e.g. /views/patient/index.ejs)
+						// This is used in conjunction with config/policies.js file
+						if ( req.session.Patient.admin ) {
+							console.log('inside admin route');
+							res.redirect( '/provider/show' );
+							return;
+						}
+
 						//Redirect to their profile page (e.g. /views/patient/show.ejs)
 						res.redirect( '/patient/show/' + patient.id );
 					} );
 				} );
 		} );
-
 	},
 
 	destroy: function ( req, res, next ) {

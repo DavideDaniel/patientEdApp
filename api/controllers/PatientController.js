@@ -23,11 +23,13 @@ module.exports = {
 	create: function ( req, res, next ) {
 		console.log( 'inside create route' );
 		console.log( req.params )
+
 		Patient.create( req.params.all(), function patientCreated( err, patient ) {
 			// // If there's an error
 			// if (err) return next(err);
+			
 
-			if ( err ) {
+			 if ( err ) {
 				console.log( err );
 				req.session.flash = {
 					err: err
@@ -36,13 +38,15 @@ module.exports = {
 				// If error redirect back to sign-up page
 				return res.redirect( '/patient/new' );
 			}
-
+			if (req.param('admin') === 'on'){patient.admin = true
 			// Log patient in
 			req.session.authenticated = true;
 			req.session.Patient = patient;
-
-			// After successfully creating the patient
-			// redirect to the show action
+			res.redirect('/provider/show')
+			// After creating the patient redirect to the show action
+		}
+			req.session.authenticated = true;
+			req.session.Patient = patient;
 
 			res.redirect( '/patient/show/' + patient.id );
 		} );

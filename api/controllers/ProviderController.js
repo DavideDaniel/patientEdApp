@@ -44,7 +44,7 @@ module.exports = {
 			// After successfully creating the provider
 			// redirect to the show action
 
-			res.redirect( '/provider' );
+			res.redirect( '/provider/show' );
 		} );
 	},
 
@@ -65,7 +65,7 @@ module.exports = {
 				console.log( "inside the request function" );
 				if ( !error && response.statusCode == 200 ) {
 					board = JSON.parse( body );
-					console.log( board );
+
 					console.log( board.idBoards[ 0 ] );
 					var board_id = board.idBoards[ 0 ];
 
@@ -75,6 +75,7 @@ module.exports = {
 								data = JSON.parse( body );
 
 								var cards = data.cards
+								console.log(cards);
 								var card_array = [];
 								Patient.find( function foundPatients( err, patients ) {
 									if ( err ) next( err );
@@ -84,11 +85,10 @@ module.exports = {
 										var card = {
 											name: cards[ i ].name,
 											url: cards[ i ].desc,
-											language: cards[ i ].labels[ 1 ].name,
-											issue: cards[ i ].labels[ 0 ].name
-											// labels: cards[ i ].labels
+											// language: cards[ i ].labels[ 1 ].name,
+											// issue: cards[ i ].labels[ 0 ].name
+											labels: cards[ i ].labels
 										}
-										console.log( card.labels );
 										card_array.push( card )
 									}
 
