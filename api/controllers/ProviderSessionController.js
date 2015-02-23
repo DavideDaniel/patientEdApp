@@ -9,11 +9,11 @@ module.exports = {
 
 	new: function ( req, res, next ) {
 
-		console.log( 'inside new route' );
+		console.log( 'inside new route for provider' );
 		req.session.authenticated = true;
 		console.log( req.session );
 
-		res.view( 'session/new' )
+		res.view('providersession/new')
 	},
 
 	create: function ( req, res, next ) {
@@ -26,22 +26,22 @@ module.exports = {
 				name: 'usernamePasswordRequired',
 				message: 'You must enter both a username and password.'
 			} ]
-
+			console.log(usernamePasswordRequiredError);
 			// key of usernamePasswordRequiredError
 			req.session.flash = {
 				err: usernamePasswordRequiredError
 			}
 
-			res.redirect( '/session/new' );
+			res.redirect( 'providersession/new' );
 			return;
 		}
-		// Try to find the patient by their username..
-		Patient.findOneByPatientUsername( req.param( 'username' ), function foundPatient(
-			err, patient ) {
+
+		Provider.findOneByProviderUsername( req.param( 'username' ), function foundProvider(
+			err, provider ) {
 			if ( err ) return next( err );
 
-			// If no patient is found...
-			if ( !patient ) {
+			// If no provider is found...
+			if ( !provider ) {
 				var usernameError = [ {
 					name: 'noAccount',
 					message: 'Username ' + req.param( 'username' ) + ' not found.'
@@ -49,39 +49,41 @@ module.exports = {
 				req.session.flash = {
 					err: usernameError
 				}
-				res.redirect( '/session/new' );
+				console.log(usernameError);
+				res.redirect( 'providersession/new' );
 				return;
 			}
 
-			// Compare password from the form params to the encrypted password of the patient found.
-			bcrypt.compare( req.param( 'password' ), patient.encryptedPassword,
+			// Compare password from the form params to the encrypted password of the provider found.
+			bcrypt.compare( req.param( 'password' ), provider.encryptedPassword,
 				function ( err, valid ) {
 					if ( err ) return next( err );
 
 					// If the password from the form doesn't match the password from the database...
 					if ( !valid ) {
-						var patientnamePasswordMismatchError = [ {
-							name: 'patientnamePasswordMismatch',
-							message: 'Invalid patientname and password combination.'
+						var providernamePasswordMismatchError = [ {
+							name: 'providernamePasswordMismatch',
+							message: 'Invalid providername and password combination.'
 						} ]
 						req.session.flash = {
-							err: patientnamePasswordMismatchError
+							err: providernamePasswordMismatchError
 						}
-						res.redirect( '/session/new' );
+						console.log(providernamePasswordMismatchError);
+						res.redirect( 'providersession/new' );
 						return;
 					}
 
-					// Log patient in
+					// Log provider in
 					req.session.authenticated = true;
-					req.session.Patient = patient;
+					req.session.Provider = provider;
 
 					// Change status to online
-					patient.online = true;
-					patient.save( function ( err, patient ) {
+					provider.online = true;
+					provider.save( function ( err, provider ) {
 						if ( err ) return next( err );
 
-						//Redirect to their profile page (e.g. /views/patient/show.ejs)
-						res.redirect( '/patient/show/' + patient.id );
+						//Redirect to their particular page (e.g. /views/provider/show.ejs)
+						res.redirect( '/provider/show' );
 					} );
 				} );
 		} );
@@ -90,21 +92,21 @@ module.exports = {
 
 	destroy: function ( req, res, next ) {
 
-		Patient.findOne( req.session.Patient.id, function foundPatient( err, patient ) {
+		Provider.findOne( req.session.Provider.id, function foundProvider( err, provider ) {
 
-			var patientId = req.session.Patient.id;
+			var providerId = req.session.Provider.id;
 
-			if ( patient ) {
-				Patient.update( patientId, {
+			if ( provider ) {
+				Provider.update( providerId, {
 					online: false
 				}, function ( err ) {
 					if ( err ) return next( err );
 
-					// Inform other sockets (e.g. connected sockets that are subscribed) that the session for this patient has ended.
-					Patient.publishUpdate( patientId, {
+					// Inform other sockets (e.g. connected sockets that are subscribed) that the session for this provider has ended.
+					Provider.publishUpdate( providerId, {
 						loggedIn: false,
-						id: patientId,
-						name: patient.name,
+						id: providerId,
+						name: provider.name,
 						action: ' has logged out.'
 					} );
 

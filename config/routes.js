@@ -35,16 +35,20 @@ module.exports.routes = {
   '/': 'MainController',
 
   '/session/new': 'SessionController.new',
+  '/session/provider/new': 'ProviderSessionController.new',
+  '/session/create': 'SessionController.create',
+  '/session/provider/create': 'ProviderSessionController.create',
+  '/session/destroy': 'SessionController.destroy',
+  '/session/provider/destroy': 'ProviderSessionController.destroy',
 
-  '/signup': 'MainController.signup',
-  '/login': 'MainController.login',
-
-  '/provider': 'ProviderController.queryAll',
-  '/provider/trello': 'ProviderController.getTrello',
+  'get /provider/show': 'ProviderController.queryAll',
+  'get /provider/new': 'ProviderController.new',
+  'post /provider/create': 'ProviderController.create',
+  // '/provider/trello': 'ProviderController.getTrello',
 
   '/patient?': 'PatientController.find',
   'get /patient/new': 'PatientController.new',
-  // 'post /patient/:id': 'PatientController.create',
+  'post /patient/create': 'PatientController.create',
   'get /patient/show/:id': 'PatientController.show',
   'put /patient/:id?': 'PatientController.update',
   'delete /patient/:id?': 'PatientController.destroy'

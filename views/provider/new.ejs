@@ -1,0 +1,64 @@
+<form action="/provider/create" method="POST"  class="rightHolder form-horizontal">
+    <fieldset>
+    <legend>Sign up</legend></fieldset>
+
+    <% if(flash && flash.err) { %>
+        <ul class="alert alert-success">
+    <% Object.keys(flash.err).forEach(function(error) { %>
+        <li><%- JSON.stringify(flash.err[error]) %></li>
+    <% }) %>
+    </ul>
+    <% } %>
+
+    <div class="control-group">
+    <label for="signupName" class="controls">
+        User Name
+    </label>
+
+    </div>
+    <div class="controls">
+    <input type="text" name="signupName" />
+    </div>
+
+    <div class="control-group">
+    <label for="fullName" class="controls">
+        Full Name
+    </label>
+
+    </div>
+    <div class="controls">
+    <input type="text" name="fullName"  />
+    </div>
+
+    <div class="control-group">
+    <label for="email" class="controls">
+        Email
+    </label>
+
+    </div>
+    <div class="controls">
+    <input type="text" name="email"  />
+    </div>
+
+    <div class="control-group">
+<label for="password" class="controls">
+        Password
+</label>
+</div>
+<div class="controls">
+<input type="password" name="signupPassword" />
+</div>
+
+    <div class="control-group">
+<label for="confirm_password" class="controls">
+        Confirm Password
+</label>
+</div>
+<div class="controls">
+<input type="password" name="signupConfirmPassword"  />
+</div>
+
+<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+<br>
+<button type="submit" name="signupButton" class= "btn btn-default btn-sm">Sign Up</button>
+</form>

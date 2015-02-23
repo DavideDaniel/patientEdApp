@@ -26,7 +26,26 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+  // '*': true,
+
+  '*': 'flash',
+
+  patient: {
+    'new': 'flash',
+    create: 'flash',
+    show: 'patientCanSeeOwn',
+    '*': 'authenticated'
+
+  },
+
+  provider: {
+    'new': 'flash',
+    create: 'flash',
+    show: 'patientCanSeeOwn', 
+    edit: 'patientCanSeeOwn', 
+    update: 'patientCanSeeOwn', 
+    '*': 'provider'
+  }
 
   /***************************************************************************
   *                                                                          *

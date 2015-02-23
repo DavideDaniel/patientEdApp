@@ -12,9 +12,9 @@ module.exports = {
 	 */
 	new: function ( req, res, next ) {
 
-
 		console.log( 'inside new route' );
-		res.view('main/index.ejs')
+		console.log( req.session );
+		res.view()
 	},
 
 	/**
@@ -22,18 +22,30 @@ module.exports = {
 	 */
 	create: function ( req, res, next ) {
 		console.log( 'inside create route' );
+		console.log( req.params )
 		Patient.create( req.params.all(), function patientCreated( err, patient ) {
-			if ( err ){
-				return res.redirect('/patient/new')
-			}
-			else {
-				console.log(patient);
+			// // If there's an error
+			// if (err) return next(err);
 
-				// return res.json();
-				res.redirect( '/patient/show/' + patient.id )
+			if ( err ) {
+				console.log( err );
+				req.session.flash = {
+					err: err
+				}
+
+				// If error redirect back to sign-up page
+				return res.redirect( '/patient/new' );
 			}
 
-		} )
+			// Log patient in
+			req.session.authenticated = true;
+			req.session.Patient = patient;
+
+			// After successfully creating the patient
+			// redirect to the show action
+
+			res.redirect( '/patient/show/' + patient.id );
+		} );
 	},
 
 	/**
@@ -98,7 +110,7 @@ module.exports = {
 	 */
 	show: function ( req, res, next ) {
 		console.log( 'inside show route' );
-		console.log(req.session.authenticated);
+		console.log( req.session.authenticated );
 		Patient.findOneById( req.param( 'id' ), function ( err, patient ) {
 			if ( err ) return next( err );
 			if ( !patient )
@@ -115,8 +127,8 @@ module.exports = {
 	/**
 	 * `PatientController.edit()`
 	 */
-	 edit: function(req, res, next){
-	 Patient.findOneById( req.param( 'id' ), function foundPatient( err, patient ) {
+	edit: function ( req, res, next ) {
+		Patient.findOneById( req.param( 'id' ), function foundPatient( err, patient ) {
 			if ( err ) return next( err );
 			if ( !patient )
 				return next();
@@ -128,7 +140,7 @@ module.exports = {
 		} );
 
 	},
-	 /**
+	/**
 	 * `PatientController.update()`
 	 */
 	update: function ( req, res, next ) {
@@ -167,5 +179,6 @@ module.exports = {
 				} );
 
 			} );
-	},
+	}
+
 };
