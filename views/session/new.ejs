@@ -1,0 +1,27 @@
+<form class="leftHolder form-horizontal">
+    <fieldset>
+    <legend>Sign in</legend></fieldset>
+    <div class="control-group">
+    <label for="loginName" class="controls">
+        Screen Name
+    </label>
+
+    </div>
+    <div class="controls">
+    <input type="text" name="loginName">
+    </div>
+
+    <div class="control-group">
+<label for="password" class="controls">
+        Password
+</label>
+</div>
+<div class="controls">
+<input type="password" name="loginPassword">
+
+</div>
+<input type="hidden" name="_csrf" value = "<%= _csrf %>">
+<br>
+<button type= "submit" class= "btn btn-default btn-sm">Sign In</button>
+
+    </form>

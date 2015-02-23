@@ -34,6 +34,8 @@ module.exports.routes = {
 
   '/': 'MainController',
 
+  '/session/new': 'SessionController.new',
+
   '/signup': 'MainController.signup',
   '/login': 'MainController.login',
 

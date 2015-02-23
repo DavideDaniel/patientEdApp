@@ -98,6 +98,7 @@ module.exports = {
 	 */
 	show: function ( req, res, next ) {
 		console.log( 'inside show route' );
+		console.log(req.session.authenticated);
 		Patient.findOneById( req.param( 'id' ), function ( err, patient ) {
 			if ( err ) return next( err );
 			if ( !patient )

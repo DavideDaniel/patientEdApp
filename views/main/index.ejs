@@ -1,11 +1,11 @@
 
-    <div class="wrapper">
+    <div class="wrapper row">
         
 
 
-    <div class="leftHolder form-horizontal">
+    <form class="leftHolder form-horizontal">
     <fieldset>
-    <legend>Sign in</legend>
+    <legend>Sign in</legend></fieldset>
     <div class="control-group">
     <label for="loginName" class="controls">
         Screen Name
@@ -25,13 +25,14 @@
 <input type="password" id="loginPassword">
 
 </div>
-<input type="hidden" name="authenticity_token" value = "">
+<input type="hidden" name="_csrf" value = "<%= _csrf %>">
 <br>
-<button id="loginButton" class= "btn btn-default btn-sm">Sign In</button>
-    </fieldset>
-    </div>
+<button type= "submit" id="loginButton" class= "btn btn-default btn-sm">Sign In</button>
+
+    </form>
 <br>
 <br>
+
     <div class="rightHolder form-horizontal">
     <fieldset>
     <legend>Sign up</legend></fieldset>
@@ -86,62 +87,13 @@
 <input type="hidden" name="authenticity_token" value = "">
 <br>
 <button id="signupButton" class= "btn btn-default btn-sm">Sign Up</button>
-    </fieldset>
-    </div>
-    
-
-    
-    
-    
 
     </div>
-</div>
-
-
-<script>
-    $("#loginButton").click(function(){
-        var username = $("#loginName").val();
-        var password = $("#loginPassword").val();
-        if (username && password) {
-            $.post(
-                '/login',
-                {username: username, password:password},
-                function () {
-                    window.location = "/patient/show/"+patient.id;
-                }
-            ).fail(function(res){
-                alert("Error: " + res.getResponseHeader("error"));
-            });
-        } else {
-            alert("A username and password is required");
-        }
-    });
     
-    $("#signupButton").click(function(){
-    var username = $("#signupName").val();
-    console.log(username);
-    var fullName = $("#fullName").val();
-    console.log(fullName);
-    var email = $("#email").val();
-    console.log(email);
-    var password = $("#signupPassword").val();
-    var confirmPassword = $("#signupConfirmPassword").val();
-    if (username && password) {
-        if (password === confirmPassword) {
-            $.post(
-                '/signup',
-                {username: username, fullName: fullName, email: email, password:password},
-                function () {
-                    window.location = "/patients/"+patient.id;
-                }
-            ).fail(function(res){
-                alert("Error: " + res.getResponseHeader("error"));
-            });
-        } else {
-            alert("Passwords don't match");
-        }   
-    } else {
-        alert("A username and password is required");
-    }
-});
-</script>
+
+    
+    
+    
+
+    </div>
+

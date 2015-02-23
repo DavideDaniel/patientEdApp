@@ -28,10 +28,10 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
-  // localDiskDb: {
+  localDiskDb: {
     // adapter: 'sqlite3'
-    // adapter: 'sails-disk'
-  // }
+    adapter: 'sails-disk'
+  }
 
   /***************************************************************************
   *                                                                          *
