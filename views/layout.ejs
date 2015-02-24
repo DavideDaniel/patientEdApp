@@ -50,7 +50,8 @@
         <!--STYLES END-->
 
     </head>
-    <div class="navbar navbar-fixed-top">
+    <body>
+    <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -58,7 +59,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">dr <i class="fa fa-plus"></i> ello</a>
+          <a class="navbar-brand" href="/">dr <i class="fa fa-plus"></i> ello</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -83,14 +84,14 @@
             <div class="form-group">
               <input type="password" placeholder="Password" name="password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
+            <button type="submit" class="btn btn-default btn-sm">Sign in</button>
             <input type="hidden" name="_csrf" value="<%= _csrf %>" />
           </form>
           <% } %>
         </div>
       </div>
     </div>
-
+    
 
         
 

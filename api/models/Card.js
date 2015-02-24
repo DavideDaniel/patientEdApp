@@ -9,25 +9,17 @@ module.exports = {
 
 	attributes: {
 
-		cardId: {
-			type: 'int'
-		},
-
 		name: {
 			type: 'string'
 		},
 
 		url: {
-			type: 'string'
+			type: 'string',
+			unique: true
 		},
 
-		language: {
-			type: 'string'
-		},
-
-		issue: {
-			type: 'string'
+		labels: {
+			type: 'array'
 		}
 	}
 };
-
