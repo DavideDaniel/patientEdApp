@@ -1,5 +1,8 @@
 # patientEdApp
 
+Test run for project in Sails - needs to be refactored incorporating Backbone changes from dr+ello repo
+
+
 User Stories
 ---
 
